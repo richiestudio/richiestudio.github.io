@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connecting TikTok · Richie Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap doc">
+  <h1>Connecting TikTok…</h1>
+  <p id="msg">Handing the sign-in back to Richie Studio on this computer.</p>
+</main>
+<script>
+  // TikTok only accepts https sign-in return addresses. Richie Studio runs on the owner's own computer, so this page
+  // forwards TikTok's one-time sign-in code to it (nothing is stored or sent anywhere else).
+  var q = window.location.search || "";
+  if (q.indexOf("code=") >= 0 || q.indexOf("error") >= 0) {
+    window.location.replace("http://127.0.0.1:8777/api/tiktok/callback" + q);
+  } else {
+    document.getElementById("msg").textContent = "Nothing to connect. Start from Richie Studio > System > Connect TikTok.";
+  }
+</script>
+</body>
+</html>
